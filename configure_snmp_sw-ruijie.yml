@@ -1,0 +1,12 @@
+---
+- name: Konfigurasi SNMP pada Switch ruijie
+  hosts: all
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Mengaktifkan SNMP dan set Community String di sw ruijie
+      ansible.netcommon.cli_config:
+        config: |
+          snmp-server community dc-brin2026 ro
+          snmp-server enable traps
